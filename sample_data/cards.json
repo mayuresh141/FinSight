@@ -1,0 +1,29 @@
+{
+  "cards": [
+    {
+      "id": "card_a",
+      "name": "Card A",
+      "base_cashback": 0.01,
+      "base_rule_id": "RULE-A-BASE",
+      "categories": {
+        "dining": {"rate": 0.04, "rule_id": "RULE-A-DINING"},
+        "travel": {"rate": 0.02, "rule_id": "RULE-A-TRAVEL"},
+        "gas": {"rate": 0.03, "rule_id": "RULE-A-GAS"},
+        "entertainment": {"rate": 0.02, "rule_id": "RULE-A-ENTERTAINMENT"}
+      }
+    },
+    {
+      "id": "card_b",
+      "name": "Card B",
+      "base_cashback": 0.015,
+      "base_rule_id": "RULE-B-BASE",
+      "categories": {
+        "groceries": {"rate": 0.03, "rule_id": "RULE-B-GROCERY"},
+        "travel": {"rate": 0.04, "rule_id": "RULE-B-TRAVEL"},
+        "shopping": {"rate": 0.025, "rule_id": "RULE-B-SHOPPING"},
+        "health": {"rate": 0.025, "rule_id": "RULE-B-HEALTH"}
+      }
+    }
+  ]
+}
+

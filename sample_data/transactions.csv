@@ -1,0 +1,61 @@
+transaction_id,date,merchant,amount,category,card_used,transaction_type
+TX001,2026-10-01,Chipotle,42.80,dining,card_b,purchase
+TX002,2026-10-01,United Airlines,350.00,travel,card_a,purchase
+TX003,2026-10-02,Trader Joes,86.45,groceries,card_b,purchase
+TX004,2026-10-02,Netflix,15.99,entertainment,card_a,purchase
+TX005,2026-10-03,Shell,58.20,gas,card_a,purchase
+TX006,2026-10-03,Amazon,129.99,shopping,card_b,purchase
+TX007,2026-10-04,Whole Foods,112.36,groceries,card_a,purchase
+TX008,2026-10-04,Starbucks,18.75,dining,card_b,purchase
+TX009,2026-10-05,Delta Airlines,275.00,travel,card_b,purchase
+TX010,2026-10-05,AMC Theatres,38.50,entertainment,card_a,purchase
+TX011,2026-10-06,Costco,164.22,groceries,card_b,purchase
+TX012,2026-10-06,Uber,27.40,travel,card_a,purchase
+TX013,2026-10-07,Target,73.18,shopping,card_a,purchase
+TX014,2026-10-07,Panera Bread,31.65,dining,card_b,purchase
+TX015,2026-10-08,CVS Pharmacy,46.72,health,card_a,purchase
+TX016,2026-10-08,Chevron,64.11,gas,card_b,purchase
+TX017,2026-10-09,Trader Joes,54.67,groceries,card_a,purchase
+TX018,2026-10-09,Spotify,11.99,entertainment,card_b,purchase
+TX019,2026-10-10,Marriott,218.00,travel,card_a,purchase
+TX020,2026-10-10,DoorDash,52.30,dining,card_a,purchase
+TX021,2026-10-11,Home Depot,148.90,shopping,card_b,purchase
+TX022,2026-10-11,Whole Foods,94.26,groceries,card_b,purchase
+TX023,2026-10-12,Shell,47.85,gas,card_a,purchase
+TX024,2026-10-12,Apple Services,9.99,entertainment,card_a,purchase
+TX025,2026-10-13,United Airlines,184.50,travel,card_b,purchase
+TX026,2026-10-13,Sushi Roku,88.40,dining,card_b,purchase
+TX027,2026-10-14,Walgreens,28.63,health,card_b,purchase
+TX028,2026-10-14,Amazon,64.95,shopping,card_a,purchase
+TX029,2026-10-15,Trader Joes,72.14,groceries,card_b,purchase
+TX030,2026-10-15,Starbucks,16.20,dining,card_a,purchase
+TX031,2026-10-16,Chevron,55.33,gas,card_b,purchase
+TX032,2026-10-16,AMC Theatres,24.00,entertainment,card_b,purchase
+TX033,2026-10-17,Airbnb,305.00,travel,card_a,purchase
+TX034,2026-10-17,Costco,201.45,groceries,card_a,purchase
+TX035,2026-10-18,Best Buy,219.99,shopping,card_b,purchase
+TX036,2026-10-18,Chipotle,36.70,dining,card_b,purchase
+TX037,2026-10-19,City Utilities,142.80,utilities,card_a,purchase
+TX038,2026-10-19,CVS Pharmacy,23.47,health,card_a,purchase
+TX039,2026-10-20,Shell,61.92,gas,card_b,purchase
+TX040,2026-10-20,Netflix,15.99,entertainment,card_b,purchase
+TX041,2026-10-21,Southwest Airlines,198.00,travel,card_b,purchase
+TX042,2026-10-21,Whole Foods,78.39,groceries,card_a,purchase
+TX043,2026-10-22,The Cheesecake Factory,96.25,dining,card_a,purchase
+TX044,2026-10-22,Target,58.77,shopping,card_b,purchase
+TX045,2026-10-23,Walgreens,34.18,health,card_b,purchase
+TX046,2026-10-23,Uber,21.60,travel,card_a,purchase
+TX047,2026-10-24,Trader Joes,103.28,groceries,card_b,purchase
+TX048,2026-10-24,Shell,49.75,gas,card_a,purchase
+TX049,2026-10-25,Spotify,11.99,entertainment,card_a,purchase
+TX050,2026-10-25,DoorDash,44.90,dining,card_b,purchase
+TX051,2026-10-26,IKEA,186.40,shopping,card_a,purchase
+TX052,2026-10-26,Costco,132.65,groceries,card_b,purchase
+TX053,2026-10-27,Marriott,245.00,travel,card_b,purchase
+TX054,2026-10-27,Panera Bread,27.85,dining,card_a,purchase
+TX055,2026-10-28,City Utilities,138.20,utilities,card_b,purchase
+TX056,2026-10-28,CVS Pharmacy,57.12,health,card_a,purchase
+TX057,2026-10-29,Target,89.50,shopping,card_b,purchase
+TX058,2026-10-29,Returned Jacket,-79.99,shopping,card_a,refund
+TX059,2026-10-30,Card Payment,650.00,transfer,card_a,credit_card_payment
+TX060,2026-10-30,Account Transfer,500.00,transfer,card_b,transfer
