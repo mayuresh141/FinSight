@@ -14,6 +14,10 @@ This prototype is not financial advice. Card rates in the sample data are synthe
 
 The app includes heuristic PII detection for emails, phone numbers, SSNs, and long account/card numbers. Matching values are redacted from tool results before they are sent to Groq. This is a demo guardrail, not comprehensive privacy or compliance protection; use synthetic data for evaluation.
 
+## AI assistance and authorship
+
+Codex was used as an AI engineering assistant for implementation support, debugging, test creation, documentation, and PDF preparation. The problem selection, FinSight product direction, architecture, tool boundaries, guardrails, scope, trade-offs, and final design decisions were made by the candidate. Codex output was checked through unit tests, evaluation runs, live Groq smoke tests, sample-data validation, and visual inspection.
+
 ## Setup
 
 Python 3.9+ is supported for this prototype. The implementation was verified locally with Python 3.9.6.
