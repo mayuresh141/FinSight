@@ -2,6 +2,8 @@
 
 FinSight is a focused prototype for detecting missed credit-card cashback opportunities using only user-supplied transaction data and synthetic card reward rules.
 
+Live demo: https://finsight-nes2ccxnythb832nzsiinh.streamlit.app/
+
 ## Core workflow
 
 1. Load a transactions CSV and card-profiles JSON.
@@ -36,6 +38,8 @@ Set `GROQ_API_KEY` in your shell or `.env`. Do not commit the key. The app still
 ```bash
 streamlit run app.py
 ```
+
+The same Streamlit application is deployed at the live demo URL above.
 
 Use the synthetic example data first. The app accepts positive purchase amounts and excludes transfers, refunds, and credit-card payments. Currency is calculated with `Decimal` and displayed to cents using `ROUND_HALF_UP`.
 

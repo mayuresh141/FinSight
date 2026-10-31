@@ -115,6 +115,7 @@ def build_story():
     # Page 1: problem selection
     story += [P("CASE STUDY 1 | CANDIDATE BRIEF", "CoverKicker"), P("FinSight", "CoverTitle"), P("Evidence-Grounded AI Financial Assistant", "CoverSubtitle")]
     story.append(callout("Decision summary", "Build a focused assistant that compares real transaction behavior against user-supplied synthetic card rules, identifies missed cashback, and explains every recommendation with transaction and rule evidence."))
+    story.append(P("Live prototype: <link href='https://finsight-nes2ccxnythb832nzsiinh.streamlit.app/' color='#2563EB'>finsight-nes2ccxnythb832nzsiinh.streamlit.app</link>", "Smallx"))
     story += [Spacer(1, 12), P("1. Choose a problem worth solving", "H1x")]
     story.append(P("I considered three everyday problems where software and AI could help users make better decisions.", "Bodyx"))
     problem_data = [
