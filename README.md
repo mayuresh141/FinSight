@@ -67,5 +67,5 @@ Implemented: deterministic spending analysis, cashback comparison, rewards optim
 
 Mocked/synthetic: card profiles, reward rates, and transaction history.
 
-Deferred: quarterly caps, rotating categories, activation requirements, merchant-specific offers, external card-benefit verification, production authentication, databases, and comprehensive agent evaluation.
+Deferred future work: additional tools for monthly spending trends, recurring-spend detection, card-profile management, and richer comparisons; stronger guardrails for ambiguous categories, rule freshness and provenance, user confirmation, and comprehensive PII handling; and production capabilities such as authentication, secure storage, external benefit verification, and broader evaluation.
 
