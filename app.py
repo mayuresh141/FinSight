@@ -29,14 +29,14 @@ with st.sidebar:
     st.header("Inputs")
     dataset_mode = st.selectbox(
         "Choose a dataset",
-        ["Synthetic 60 transactions", "PII guardrail test data", "Upload my own files"],
+        ["Synthetic 60 transactions", "Upload my own files"],
     )
 
     if dataset_mode == "Upload my own files":
         transaction_file = st.file_uploader("Transactions CSV", type=["csv"])
         cards_file = st.file_uploader("Card profiles JSON", type=["json"])
     else:
-        dataset_path = "sample_data/transactions.csv" if dataset_mode == "Synthetic 60 transactions" else "sample_data/transactions_pii_test.csv"
+        dataset_path = "sample_data/transactions.csv"
         transaction_file = io.BytesIO(sample_bytes(dataset_path))
         transaction_file.name = dataset_path.rsplit("/", 1)[-1]
         cards_file = io.BytesIO(sample_bytes("sample_data/cards.json"))
@@ -85,12 +85,5 @@ if question:
             st.json(analysis)
             for item in trace:
                 st.write("- " + item)
-            if analysis.get("report"):
-                st.download_button(
-                    "Download Markdown report",
-                    data=analysis["report"],
-                    file_name="finsight_report.md",
-                    mime="text/markdown",
-                )
     st.session_state.messages.append({"role": "assistant", "content": response})
 

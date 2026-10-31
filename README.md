@@ -55,11 +55,11 @@ Run the offline evaluation suite without making API calls:
 python -m evaluation
 ```
 
-The suite checks routing relevance, unsupported-card safety, valid transaction and reward-rule references, numeric claims against tool results, and report grounding. Set `use_llm=True` in Python only when you intentionally want to evaluate live Groq routing.
+The suite checks the core cashback and score workflows: routing relevance, valid transaction and reward-rule references, and numeric claims against deterministic tool results. Set `use_llm=True` in Python only when you intentionally want to evaluate live Groq routing.
 
 ## Implemented, mocked, and deferred
 
-Implemented: deterministic spending analysis, cashback comparison, rewards optimization score, Pydantic validation, Streamlit upload/chat UI, bounded multi-step Groq tool calling, evidence trace, synthetic data, and focused tests.
+Implemented: deterministic spending analysis, cashback comparison, rewards optimization score, Pydantic validation, Streamlit upload/chat UI, bounded multi-step Groq tool calling, evidence trace, PII detection/redaction, synthetic data, and focused tests.
 
 Mocked/synthetic: card profiles, reward rates, and transaction history.
 

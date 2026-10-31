@@ -1,4 +1,0 @@
-transaction_id,date,merchant,amount,category,card_used,transaction_type
-TX-PII-001,2026-10-30,"Demo Customer demo.user@example.com 555-123-4567",100.00,dining,card_b,purchase
-TX-PII-002,2026-10-30,"Demo Account SSN 123-45-6789",80.00,groceries,card_a,purchase
-TX-PII-003,2026-10-30,"Demo Card 4111 1111 1111 1111",45.00,shopping,card_a,purchase

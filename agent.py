@@ -6,7 +6,7 @@ import re
 from typing import Any, Dict, List, Tuple
 
 from models import CardProfiles, Transaction
-from tools import analysis_as_dict, analyze_spending, calculate_score, find_missed_rewards, generate_report
+from tools import analysis_as_dict, analyze_spending, calculate_score, find_missed_rewards
 from validators import redact_pii
 
 
@@ -62,8 +62,6 @@ def fallback_response(question: str, result: Dict[str, Any]) -> str:
     """Provide a transparent deterministic response when Groq is unavailable."""
     lower = question.lower()
     lines = ["Groq is not configured, so this is the deterministic analysis result."]
-    if result.get("report"):
-        return lines[0] + "\n\n" + result["report"]
     if "score" in lower or "optimization" in lower:
         score = result.get("score")
         if score is None:
@@ -116,21 +114,13 @@ def _execute_tool(name: str, transactions: List[Transaction], profiles: CardProf
         return find_missed_rewards(transactions, profiles)
     if name == "calculate_score":
         return calculate_score(find_missed_rewards(transactions, profiles))
-    if name == "generate_report":
-        return generate_report(transactions, profiles)
     raise ValueError("Unsupported tool requested: %s" % name)
-
-
-def _serialize_result(result: Any) -> Dict[str, Any]:
-    return {"report": result} if isinstance(result, str) else analysis_as_dict(result)
 
 
 def _fallback_for_question(question: str, transactions: List[Transaction], profiles: CardProfiles):
     lower = question.lower()
     if "score" in lower or "optimization" in lower:
         return calculate_score(find_missed_rewards(transactions, profiles)), "calculate_score"
-    if "report" in lower:
-        return generate_report(transactions, profiles), "generate_report"
     if "spend" in lower or "category" in lower or "month" in lower:
         return analyze_spending(transactions), "analyze_spending"
     return find_missed_rewards(transactions, profiles), "find_missed_rewards"
@@ -148,14 +138,14 @@ def run_agent(question: str, transactions: List[Transaction], profiles: CardProf
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         result, tool_name = _fallback_for_question(question, transactions, profiles)
-        result_dict = redact_pii(_serialize_result(result))
+        result_dict = redact_pii(analysis_as_dict(result))
         return fallback_response(question, result_dict), [tool_name + ": executed deterministic tool", "Groq agent: skipped (GROQ_API_KEY is not set)"], result_dict
 
     try:
         from groq import Groq
     except ImportError:
         result, tool_name = _fallback_for_question(question, transactions, profiles)
-        result_dict = redact_pii(_serialize_result(result))
+        result_dict = redact_pii(analysis_as_dict(result))
         return fallback_response(question, result_dict), [tool_name + ": executed deterministic tool", "Groq agent: skipped (groq package is not installed)"], result_dict
 
     client = Groq(api_key=api_key)
@@ -164,7 +154,6 @@ def run_agent(question: str, transactions: List[Transaction], profiles: CardProf
         _tool_schema("analyze_spending", "Summarize eligible purchase spending by category."),
         _tool_schema("find_missed_rewards", "Find cashback opportunities using only uploaded card rules."),
         _tool_schema("calculate_score", "Calculate the rewards optimization score from verified cashback results."),
-        _tool_schema("generate_report", "Generate a Markdown report from verified spending, cashback, and score results."),
     ]
     messages = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": question}]
     trace: List[str] = []
@@ -190,13 +179,13 @@ def run_agent(question: str, transactions: List[Transaction], profiles: CardProf
             ]})
             for call in tool_calls:
                 result = _execute_tool(call.function.name, transactions, profiles)
-                last_result = redact_pii({"report": result} if isinstance(result, str) else analysis_as_dict(result))
+                last_result = redact_pii(analysis_as_dict(result))
                 trace.append(call.function.name + ": executed deterministic tool")
                 messages.append({"role": "tool", "tool_call_id": call.id, "name": call.function.name, "content": json.dumps(last_result, default=str)})
         raise RuntimeError("Tool-calling loop exceeded six rounds")
     except Exception as exc:
         result, tool_name = _fallback_for_question(question, transactions, profiles)
-        result_dict = redact_pii(_serialize_result(result))
+        result_dict = redact_pii(analysis_as_dict(result))
         trace.append("Groq agent error: %s" % exc)
         trace.append(tool_name + ": executed deterministic fallback tool")
         return fallback_response(question, result_dict), trace, result_dict

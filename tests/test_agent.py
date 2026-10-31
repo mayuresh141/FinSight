@@ -65,16 +65,4 @@ def test_fallback_routes_score_question_to_score_tool(monkeypatch):
     assert result["score"] == "25.00"
 
 
-def test_fallback_routes_report_question_to_report_tool(monkeypatch):
-    monkeypatch.delenv("GROQ_API_KEY", raising=False)
-    profiles = CardProfiles.model_validate({
-        "cards": [{"id": "a", "name": "A", "base_cashback": "0.01", "base_rule_id": "A-BASE"}]
-    })
-    transactions = [Transaction(
-        transaction_id="TX1", date="2026-10-01", merchant="Cafe", amount=Decimal("100"),
-        category="dining", card_used="a", transaction_type="purchase"
-    )]
-    _, trace, result = run_agent("Generate a report", transactions, profiles)
-    assert trace[0] == "generate_report: executed deterministic tool"
-    assert "# FinSight Financial Rewards Report" in result["report"]
 

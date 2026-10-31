@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from models import CardProfiles, Transaction
-from tools import analyze_spending, calculate_score, find_missed_rewards, generate_report
+from tools import analyze_spending, calculate_score, find_missed_rewards
 
 
 def profiles():
@@ -56,14 +56,4 @@ def test_rewards_optimization_score_is_calculated_from_verified_rewards():
     assert result.status == "calculated"
 
 
-def test_report_uses_verified_results_and_evidence_references():
-    transactions = [Transaction(
-        transaction_id="TX1", date="2026-10-01", merchant="Cafe", amount=Decimal("100"),
-        category="dining", card_used="low", transaction_type="purchase"
-    )]
-    report = generate_report(transactions, profiles())
-    assert "Eligible purchase spending: **$100.00**" in report
-    assert "Potential missed cashback: **$3.00**" in report
-    assert "TX1" in report
-    assert "HIGH-BASE" in report
 

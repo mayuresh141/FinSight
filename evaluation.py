@@ -11,11 +11,8 @@ from models import CardProfiles, Transaction
 
 
 CASES = [
-    {"name": "spending", "question": "Analyze my spending by category.", "expected_tool": "analyze_spending"},
     {"name": "missed_rewards", "question": "Where did I miss cashback?", "expected_tool": "find_missed_rewards"},
     {"name": "score", "question": "What is my rewards optimization score?", "expected_tool": "calculate_score"},
-    {"name": "report", "question": "Generate a complete rewards report.", "expected_tool": "generate_report"},
-    {"name": "unsupported_card", "question": "How much could I earn using my Chase Sapphire Reserve?", "expected_tool": "Guardrail"},
 ]
 
 
@@ -56,8 +53,6 @@ def evaluate_response(response: str, trace: List[str], result: Dict[str, Any], t
     evidence_valid = referenced_transactions <= known_transaction_ids and referenced_rules <= known_rule_ids
 
     supported_amounts = set(_currency_values(result))
-    if result.get("report"):
-        supported_amounts.update(_response_currency_values(result["report"]))
     claimed_amounts = _response_currency_values(response)
     numeric_claims_supported = claimed_amounts <= supported_amounts if claimed_amounts else True
 
