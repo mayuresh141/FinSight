@@ -18,7 +18,7 @@ The app includes heuristic PII detection for emails, phone numbers, SSNs, and lo
 
 ## AI assistance and authorship
 
-Codex was used as an AI engineering assistant for implementation support, debugging, test creation, documentation, and PDF preparation. The problem selection, FinSight product direction, architecture, tool boundaries, guardrails, scope, trade-offs, and final design decisions were made by the candidate. Codex output was checked through unit tests, evaluation runs, live Groq smoke tests, sample-data validation, and visual inspection.
+Codex was used as an AI engineering assistant for implementation support, debugging, test creation, documentation, and PDF preparation. I made the problem selection, FinSight product direction, architecture, tool boundaries, guardrails, scope, trade-offs, and final design decisions. Codex output was checked through unit tests, evaluation runs, live Groq smoke tests, sample-data validation, and visual inspection.
 
 ## Setup
 
